@@ -27,6 +27,10 @@ jobs:
           cache: maven
       - name: Build & Test
         run: mvn ${{ env.MAVEN_CLI_OPTS }} install
+      - name: SonarCloud Quality Scan
+        run: mvn sonar:sonar -Dsonar.projectKey=Djaytan_bukkit-slf4j
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   # Note: Artifacts can be retrieved with Jitpack based on tags -> No need to deploy
   cd:

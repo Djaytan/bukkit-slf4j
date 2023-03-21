@@ -60,11 +60,17 @@
   </ciManagement>
 
   <properties>
+    <!-- ==================== General ==================== -->
     <skipUnitTests>false</skipUnitTests>
     <project.encoding>UTF-8</project.encoding>
     <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
     <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
     <java.version>8</java.version>
+
+    <!-- ==================== Sonar ==================== -->
+    <!-- sonar.projectKey must be defined through CLI only -->
+    <sonar.organization>djaytan</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
 
   <dependencies>
@@ -333,6 +339,11 @@
             <phase>verify</phase>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.9.1.2184</version>
       </plugin>
     </plugins>
   </build>
