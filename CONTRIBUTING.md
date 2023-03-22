@@ -22,6 +22,25 @@ this [GitHub repository](https://github.com/firstcontributions/first-contributio
 
 ## Getting Started
 
+These instructions will get you a copy of the project up and running on your local machine for
+development and testing purposes.
+
+### Prerequisites
+
+Working on this project requires the following dependencies installed on your local environment:
+
+* JDK 11 ([Download Link](https://adoptium.net/en-GB/temurin/releases/?version=11))
+* Maven
+  3.6+ ([Download Link](https://maven.apache.org/download.cgi) | [Install Guide](https://maven.apache.org/install.html))
+
+### Installing
+
+The project use Maven as build system, so you only need to execute the following code:
+
+    $ mvn clean install
+
+### Documentation & Help
+
 If you want to work on Bukkit related aspects, you will find the API JavaDoc
 [here](https://hub.spigotmc.org/javadocs/spigot/).
 
@@ -58,4 +77,5 @@ If you are using IntelliJ IDEA, you can install the
 [google-java-format plugin](https://plugins.jetbrains.com/plugin/8527-google-java-format) which will
 replace the default IDE code formatting behavior.
 
-Take care to well follow [these instructions](https://github.com/google/google-java-format/blob/master/README.md#intellij-jre-config).
+Take care to well
+follow [these instructions](https://github.com/google/google-java-format/blob/master/README.md#intellij-jre-config).

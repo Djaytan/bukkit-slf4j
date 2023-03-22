@@ -72,25 +72,6 @@ public class MyClass {
 You can find a concrete Bukkit plugin using this
 extension [here](https://github.com/Djaytan/mc-jobs-reborn-patch-place-break).
 
-## Getting Started (as contributor)
-
-These instructions will get you a copy of the project up and running on your local machine for
-development and testing purposes.
-
-### Prerequisites
-
-Working on this project requires the following dependencies installed on your local environment:
-
-* JDK 11 ([Download Link](https://adoptium.net/en-GB/temurin/releases/?version=11))
-* Maven
-  3.6+ ([Download Link](https://maven.apache.org/download.cgi) | [Install Guide](https://maven.apache.org/install.html))
-
-### Installing
-
-The project use Maven as build system, so you only need to execute the following code:
-
-    $ mvn clean install
-
 ## Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on ways to help us.
