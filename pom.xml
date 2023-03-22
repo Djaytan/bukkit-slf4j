@@ -149,6 +149,7 @@
                 <exclude>**/dir.empty</exclude>
                 <exclude>.editorconfig</exclude>
                 <exclude>jitpack.yml</exclude>
+                <exclude>renovate.json5</exclude>
               </excludes>
             </licenseSet>
           </licenseSets>
