@@ -14,7 +14,7 @@ deal with libraries like HikariCP, things become even harder when wanted to have
 output when plugin is running. Finally, the previously mentioned method is not available with
 Spigot.
 
-This solution goes beyond by overcoming all these limitations.
+This solution goes beyond by overcoming all these limitations with a simple approach.
 
 ## How to use
 
