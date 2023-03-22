@@ -28,7 +28,7 @@
 
   <groupId>fr.djaytan.bukkit</groupId>
   <artifactId>bukkit-slf4j</artifactId>
-  <version>1.0.4-SNAPSHOT</version>
+  <version>1.0.4</version>
   <packaging>jar</packaging>
 
   <name>Bukkit SLF4J</name>
@@ -47,7 +47,7 @@
   <scm>
     <connection>scm:git:${project.scm.url}</connection>
     <developerConnection>scm:git:${project.scm.url}</developerConnection>
-    <tag>HEAD</tag>
+    <tag>v1.0.4</tag>
     <url>git@github.com:Djaytan/bukkit-slf4j.git</url>
   </scm>
 
