@@ -148,8 +148,7 @@
                 <exclude>src/test/resources/**</exclude>
                 <exclude>**/dir.empty</exclude>
                 <exclude>.editorconfig</exclude>
-                <exclude>renovate.json5</exclude>
-                <exclude>lombok.config</exclude>
+                <exclude>jitpack.yaml</exclude>
               </excludes>
             </licenseSet>
           </licenseSets>
