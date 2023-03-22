@@ -22,10 +22,6 @@ this [GitHub repository](https://github.com/firstcontributions/first-contributio
 
 ## Getting Started
 
-Actually, there isn't documentation which will permit you to navigate in our codebase with
-confidence. Fortunately, one will be added soon:
-https://github.com/Djaytan/mc-jobs-reborn-patch-place-break/issues/46
-
 If you want to work on Bukkit related aspects, you will find the API JavaDoc
 [here](https://hub.spigotmc.org/javadocs/spigot/).
 
@@ -45,20 +41,6 @@ to help you for getting started.
 3. You will need at least one approval of a reviewer before being able to merge the PR.
 4. All automatic jobs must pass (CircleCI, SonarQube analysis, formatting verification, ...) before
    merging.
-
-## Windows - Long Paths
-
-> "Git has a limit of 4096 characters for a filename, except on Windows when Git is compiled with
-> msys. It uses an older version of the Windows API and there's a limit of 260 characters for a
-> filename." - _From StackOverflow answer: https://stackoverflow.com/a/22575737_
-
-Since some files in project exceed 265 characters long, it is required to overcome this limitation.
-
-To solve the issue, run with administrator rights the following command:
-
-```
-$ git config --system core.longpaths true
-```
 
 ## Code Formatting
 

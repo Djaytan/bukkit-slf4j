@@ -1,22 +1,24 @@
 # bukkit-slf4j
 
 [![](https://jitpack.io/v/Djaytan/bukkit-slf4j.svg)](https://jitpack.io/#Djaytan/bukkit-slf4j)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/djaytan/bukkit-slf4j/maven.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Djaytan_mc-jobs-reborn-patch-place-break&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Djaytan_bukkit-slf4j)
 
 SLF4J bridge to Bukkit's logger for plugin.
 
-This project is highly inspired from
-the [slf4j-jdk14](https://github.com/qos-ch/slf4j/tree/master/slf4j-jdk14) one.
+## Why Using It
 
-Even if PaperMC provide
+Even if PaperMC provides
 a [`getSLF4JLogger()` method](https://jd.papermc.io/paper/1.18/org/bukkit/plugin/Plugin.html#getSLF4JLogger()),
 you need to inject the retrieved instance in any class that need to log something. When it's time to
 deal with libraries like HikariCP, things become even harder when wanted to have clean console
 output when plugin is running. Finally, the previously mentioned method is not available with
 Spigot.
 
-This solution goes beyond by overcoming all these limitations with a simple approach.
+This solution goes beyond by overcoming all these limitations with a simple approach highly inspired
+from the [slf4j-jdk14](https://github.com/qos-ch/slf4j/tree/master/slf4j-jdk14) one.
 
-## How to use
+## How To Use
 
 The dependency can be obtained through JitPack by following steps
 described [here](https://jitpack.io/#Djaytan/bukkit-slf4j/) (Maven, Gradle and so on are supported).
@@ -69,3 +71,45 @@ public class MyClass {
 
 You can find a concrete Bukkit plugin using this
 extension [here](https://github.com/Djaytan/mc-jobs-reborn-patch-place-break).
+
+## Getting Started (as contributor)
+
+These instructions will get you a copy of the project up and running on your local machine for
+development and testing purposes.
+
+### Prerequisites
+
+Working on this project requires the following dependencies installed on your local environment:
+
+* JDK 11 ([Download Link](https://adoptium.net/en-GB/temurin/releases/?version=11))
+* Maven
+  3.6+ ([Download Link](https://maven.apache.org/download.cgi) | [Install Guide](https://maven.apache.org/install.html))
+
+### Installing
+
+The project use Maven as build system, so you only need to execute the following code:
+
+    $ mvn clean install
+
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on ways to help us.
+
+Take care to always follow our [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the
+[tags on this repository](https://github.com/Djaytan/bukkit-slf4j/tags).
+
+## Authors
+
+* [Djaytan](https://github.com/Djaytan) - *Initial work*
+
+See also the list of
+[contributors](https://github.com/Djaytan/bukkit-slf4j/graphs/contributors)
+who participated in this project.
+
+## Licence
+
+This project is under the [MIT](https://opensource.org/licenses/MIT) license.
