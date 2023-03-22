@@ -38,7 +38,7 @@ public class YourPlugin extends JavaPlugin {
 }
 ```
 
-Then you can simply declare loggers as follows:
+Then you can simply declare a new logger as follows:
 
 ```java
 import org.slf4j.Logger;
@@ -69,7 +69,7 @@ public class MyClass {
 }
 ```
 
-You can find a concrete Bukkit plugin using this
+You can find a concrete example of Bukkit plugin using this
 extension [here](https://github.com/Djaytan/mc-jobs-reborn-patch-place-break).
 
 ## Contributing
