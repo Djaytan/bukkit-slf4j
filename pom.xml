@@ -249,7 +249,7 @@
         <configuration>
           <!--
             We will not have to deploy in repository since we rely on Jitpack
-            https://jitpack.io/#Djaytan/mc-jobs-reborn-patch-place-break
+            https://jitpack.io/#Djaytan/bukkit-slf4j
           -->
           <skip>true</skip>
         </configuration>

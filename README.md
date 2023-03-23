@@ -2,7 +2,7 @@
 
 [![](https://jitpack.io/v/Djaytan/bukkit-slf4j.svg)](https://jitpack.io/#Djaytan/bukkit-slf4j)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/djaytan/bukkit-slf4j/maven.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Djaytan_mc-jobs-reborn-patch-place-break&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Djaytan_bukkit-slf4j)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Djaytan_bukkit-slf4j&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Djaytan_bukkit-slf4j)
 
 SLF4J bridge to Bukkit's logger for plugin.
 
