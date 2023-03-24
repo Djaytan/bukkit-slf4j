@@ -1,1 +1,1 @@
-fr.djaytan.bukkit.slf4j.BukkitLoggerServiceProvider
+com.djaytan.bukkit.slf4j.BukkitLoggerServiceProvider
