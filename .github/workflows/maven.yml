@@ -45,7 +45,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Prepare
-        uses: qcastel/github-actions-maven-release@v1.12.39
+        uses: qcastel/github-actions-maven-release@v1.12.41
         env:
           JAVA_HOME: /usr/lib/jvm/java-11-openjdk/
         with:
