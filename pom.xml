@@ -65,7 +65,7 @@
     <project.encoding>UTF-8</project.encoding>
     <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
     <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
-    <java.version>8</java.version>
+    <java.version>17</java.version>
 
     <!-- ==================== Sonar ==================== -->
     <!-- sonar.projectKey must be defined through CLI only -->
@@ -266,7 +266,7 @@
             <dependencyConvergence />
             <reactorModuleConvergence />
             <requireJavaVersion>
-              <version>[11,12)</version>
+              <version>[17,18)</version>
             </requireJavaVersion>
             <requireMavenVersion>
               <version>[3.8,)</version>
