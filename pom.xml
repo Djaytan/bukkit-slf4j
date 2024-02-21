@@ -86,7 +86,7 @@
       <plugin>
         <groupId>com.github.ekryd.sortpom</groupId>
         <artifactId>sortpom-maven-plugin</artifactId>
-        <version>3.3.0</version>
+        <version>3.4.0</version>
         <configuration>
           <createBackupFile>false</createBackupFile>
           <encoding>${project.encoding}</encoding>
@@ -182,7 +182,7 @@
       <plugin>
         <groupId>com.spotify.fmt</groupId>
         <artifactId>fmt-maven-plugin</artifactId>
-        <version>2.21.1</version>
+        <version>2.22.1</version>
         <executions>
           <execution>
             <id>format-code</id>
@@ -214,7 +214,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
+        <version>3.12.1</version>
         <configuration>
           <release>${java.version}</release>
           <failOnWarning>true</failOnWarning>
@@ -293,7 +293,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.6.0</version>
+        <version>3.6.3</version>
         <configuration>
           <quiet>true</quiet>
           <additionalJOptions>
