@@ -1,8 +1,11 @@
 # bukkit-slf4j
 
 [![](https://jitpack.io/v/Djaytan/bukkit-slf4j.svg)](https://jitpack.io/#Djaytan/bukkit-slf4j)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/djaytan/bukkit-slf4j/maven.yml)
+[![CI](https://github.com/Djaytan/bukkit-slf4j/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Djaytan/bukkit-slf4j/actions/workflows/ci.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Djaytan_bukkit-slf4j&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Djaytan_bukkit-slf4j)
+[![semantic-release: conventional-commits](https://img.shields.io/badge/semantic--release-conventional--commits-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8432/badge)](https://www.bestpractices.dev/projects/8432)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Djaytan/bukkit-slf4j/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Djaytan/bukkit-slf4j)
 
 SLF4J bridge to Bukkit's logger for plugin.
 
@@ -82,6 +85,11 @@ Take care to always follow our [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the
 [tags on this repository](https://github.com/Djaytan/bukkit-slf4j/tags).
+
+## Security Policy
+
+In case you think having found a security vulnerability, please consult
+our [Security Policy](docs/SECURITY.md).
 
 ## Licence
 
