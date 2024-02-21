@@ -1,0 +1,132 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, 'release/v*', next, next-major, beta, alpha]
+  pull_request:
+    branches: [main, 'release/v*', next, next-major, beta, alpha]
+  schedule:
+    - cron: '5 4 * * *' # Every day at 04:05
+
+permissions: {}
+
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@63c24ba6bd7ba022e95695ff85de572c04a18142 # v2.7.0
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            github.com:443
+            api.github.com:443
+            objects.githubusercontent.com:443
+            repo.maven.apache.org:443
+            jitpack.io:443
+            repo.papermc.io:443
+            api.nuget.org:443
+            registry.npmjs.org:443
+            auth.docker.io:443
+            registry-1.docker.io:443
+            production.cloudflare.docker.com:443
+            sonarcloud.io:443
+            scanner.sonarcloud.io:443
+            ea6ne4j2sb.execute-api.eu-central-1.amazonaws.com:443
+            sc-cleancode-sensorcache-eu-central-1-prod.s3.amazonaws.com:443
+
+      - name: Checkout repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0 # Required by SonarCloud
+
+      - name: Setup Java
+        uses: actions/setup-java@387ac29b308b003ca37ba93a6cab5eb57c8f5f93 # v4.0.0
+        with:
+          java-version: 17
+          distribution: temurin
+          cache: maven
+
+      - name: Cache SonarCloud packages
+        uses: actions/cache@13aacd865c20de90d75de3b17ebe84f7a17d57d2 # v4.0.0
+        with:
+          path: ~/.sonar/cache
+          key: sonar
+          restore-keys: sonar
+
+      - name: Maven build & SonarCloud quality scan
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
+        run: |
+          SONAR_ORGANIZATION="$(echo '${{ github.repository_owner }}' | awk '{print tolower($0)}')"
+          SONAR_PROJECT_KEY="$(echo '${{ github.repository }}' | sed 's/\//_/')"
+
+          mvn verify sonar:sonar --activate-profiles ci -Dstyle.color=always \
+            --batch-mode --errors --strict-checksums --update-snapshots \
+            -Dsonar.host.url="${SONAR_HOST_URL}" \
+            -Dsonar.organization="${SONAR_ORGANIZATION}" \
+            -Dsonar.projectKey="${SONAR_PROJECT_KEY}"
+
+  codeql-sast:
+    name: CodeQL - Static Application Security Testing (SAST)
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+
+    permissions:
+      actions: read
+      contents: read
+      security-events: write # Required for reporting found security vulnerabilities
+
+    steps:
+      - name: Harden runner
+        uses: step-security/harden-runner@63c24ba6bd7ba022e95695ff85de572c04a18142 # v2.7.0
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            github.com:443
+            api.github.com:443
+            uploads.github.com:443
+            objects.githubusercontent.com
+            repo.maven.apache.org:443
+            jitpack.io:443
+            repo.papermc.io:443
+            api.nuget.org:443
+
+      - name: Checkout repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          persist-credentials: false
+
+      - name: Setup Java
+        uses: actions/setup-java@387ac29b308b003ca37ba93a6cab5eb57c8f5f93 # v4.0.0
+        with:
+          java-version: 17
+          distribution: temurin
+          cache: maven
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@e8893c57a1f3a2b659b6b55564fdfdbbd2982911 # v3.24.0
+        with:
+          languages: java
+
+      - name: Build
+        run: |
+          mvn package --activate-profiles fast -Dstyle.color=always \
+            --batch-mode --errors --strict-checksums --update-snapshots --fail-fast
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@e8893c57a1f3a2b659b6b55564fdfdbbd2982911 # v3.24.0
+        with:
+          category: /language:java
