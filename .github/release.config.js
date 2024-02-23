@@ -37,8 +37,7 @@ module.exports = {
     [
       '@semantic-release/exec',
       {
-        prepareCmd: 'mvn versions:set -DnewVersion="${nextRelease.gitTag}" --batch-mode --errors',
-        publishCmd: 'mvn deploy --activate-profiles release -Dstyle.color=always --batch-mode --errors --strict-checksums --update-snapshots',
+        publishCmd: './scripts/publish_maven_artifacts.sh ${nextRelease.version}',
         successCmd: `echo '$\{nextRelease.gitTag}' > '${process.env.TMP_TAG_VERSION_NAME_FILE}'`
       }
     ],
