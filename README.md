@@ -1,8 +1,8 @@
 # bukkit-slf4j
 
-[![](https://jitpack.io/v/Djaytan/bukkit-slf4j.svg)](https://jitpack.io/#Djaytan/bukkit-slf4j)
+![Maven metadata URL](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Frepo1.maven.org%2Fmaven2%2Fcom%2Fdjaytan%2Fbukkit%2Fbukkit-slf4j%2Fmaven-metadata.xml)
 [![CI](https://github.com/Djaytan/bukkit-slf4j/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Djaytan/bukkit-slf4j/actions/workflows/ci.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Djaytan_bukkit-slf4j&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Djaytan_bukkit-slf4j)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Djaytan_bukkit-slf4j&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Djaytan_bukkit-slf4j)  
 [![semantic-release: conventional-commits](https://img.shields.io/badge/semantic--release-conventional--commits-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8432/badge)](https://www.bestpractices.dev/projects/8432)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Djaytan/bukkit-slf4j/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Djaytan/bukkit-slf4j)
@@ -21,10 +21,27 @@ Spigot.
 This solution goes beyond by overcoming all these limitations with a simple approach highly inspired
 from the [slf4j-jdk14](https://github.com/qos-ch/slf4j/tree/master/slf4j-jdk14) one.
 
-## How To Use
+## Setup
 
-The dependency can be obtained through JitPack by following steps
-described [here](https://jitpack.io/#Djaytan/bukkit-slf4j/) (Maven, Gradle and so on are supported).
+The library is available in
+the [Maven Central Repository](https://central.sonatype.com/artifact/com.djaytan.bukkit/bukkit-slf4j/overview).
+
+### Maven
+
+```xml
+
+<dependency>
+  <groupId>com.djaytan.bukkit</groupId>
+  <artifactId>bukkit-slf4j</artifactId>
+  <version>2.0.0</version>
+</dependency>
+```
+
+### Gradle
+
+    implementation group: 'com.djaytan.bukkit', name: 'bukkit-slf4j', version: '2.0.0'
+
+## How To Use
 
 Once added, you simply need to pass the Bukkit logger when enabling plugin like as follows:
 
