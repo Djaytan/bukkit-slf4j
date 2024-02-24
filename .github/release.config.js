@@ -37,6 +37,7 @@ module.exports = {
     [
       '@semantic-release/exec',
       {
+        publishCmd: './scripts/publish_maven_artifacts.sh ${nextRelease.version}',
         successCmd: `echo '$\{nextRelease.gitTag}' > '${process.env.TMP_TAG_VERSION_NAME_FILE}'`
       }
     ],
