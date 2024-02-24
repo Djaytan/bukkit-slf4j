@@ -120,7 +120,7 @@ from [Angular project](https://github.com/angular/angular/blob/main/CONTRIBUTING
   │       │
   │       └─⫸ Commit Scope: readme|contributing|changelog|packaging|deps|other|github|renovate|release
   │
-  └─⫸ Commit Type: feat|fix|perf|refactor|docs|test|build|ci
+  └─⫸ Commit Type: feat|fix|perf|refactor|docs|test|build|ci|chore
 ```
 
 The `<type>` and `<summary>` fields are mandatory, the `(<scope>)` field is optional.
@@ -137,6 +137,8 @@ It must be one of the following:
 * **test**: Adding missing tests or correcting existing tests
 * **build**: Changes that affect the build system or external dependencies
 * **ci**: Changes to our CI configuration files and scripts (e.g. GitHub Actions, Renovate, ...)
+* **chore**: Changes that don't in any other category (e.g. dependencies' update, update
+  of `.gitignore` `.gitattributes` & `.editorconfig` files, ...)
 
 ##### Scope
 
@@ -153,9 +155,6 @@ No scope should be specified except for some changes.
 
 * **packaging**: used for changes updating the Maven layout in all of our modules (e.g. groupId
   change, inherited plugins changes, ...)
-* **deps**: used for changes updating the project dependencies
-* **other**: used for changes affecting the following
-  files: `.gitignore` `.gitattributes` & `.editorconfig`
 
 ###### Specific to the `ci` type
 
@@ -163,6 +162,10 @@ No scope should be specified except for some changes.
   file(s)
 * **renovate**: used for updating Renovate configuration
 * **release**: used for updating release-related configuration
+
+##### Specific to the `chore` & `fix` types
+
+* **deps**: used for changes updating the project dependencies
 
 ##### Summary
 
