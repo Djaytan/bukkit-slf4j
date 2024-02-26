@@ -22,18 +22,17 @@
  */
 package com.djaytan.bukkit.slf4j;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 
 /**
- * This class is inspired from slf4j-jdk14 module.
- *
- * <p>It is responsible for creating SLF4J logger based on a provided JUL one. This is a specific
- * scenario that we need to rely on when creating Bukkit plugins. That's due to the logging design
- * being based on a single instance shared across the whole plugin (mainly for appending the plugin
- * name while not displaying technical information such as the class full name).
+ * This class is responsible for creating SLF4J loggers based on a provided JUL one. This is a
+ * specific scenario that we need to rely on when creating Bukkit plugins. That's due to the logging
+ * design being based on a single instance shared across the whole plugin (mainly for appending the
+ * plugin name while not displaying technical information such as the class full name).
  */
 public final class BukkitLoggerFactory implements ILoggerFactory {
 
@@ -56,11 +55,24 @@ public final class BukkitLoggerFactory implements ILoggerFactory {
     staticLogger = jdk14Logger;
   }
 
+  /**
+   * Resets the Bukkit logger.
+   *
+   * <p>For testing purposes only.
+   */
+  static void resetBukkitLogger() {
+    staticLogger = null;
+  }
+
   @Override
+  @Contract("null -> fail")
   public Logger getLogger(@Nullable String name) {
+    if (name == null) {
+      throw new IllegalArgumentException("The logger name cannot be null");
+    }
     if (staticLogger == null) {
       throw new IllegalStateException("The Bukkit logger must be defined first");
     }
-    return new BukkitLoggerAdapter(staticLogger);
+    return new BukkitLoggerAdapter(staticLogger, name);
   }
 }
