@@ -31,7 +31,7 @@ jobs:
             objects.githubusercontent.com:443
             uploads.github.com:443
             repo.maven.apache.org:443
-            s01.oss.sonatype.org:443
+            central.sonatype.com:443
             jitpack.io:443
             repo.papermc.io:443
             api.nuget.org:443
@@ -68,9 +68,9 @@ jobs:
           java-version: 17
           distribution: temurin
           cache: maven
-          server-id: ossrh
-          server-username: OSSRH_USERNAME
-          server-password: OSSRH_TOKEN
+          server-id: central
+          server-username: CENTRAL_USERNAME
+          server-password: CENTRAL_TOKEN
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: GPG_PASSPHRASE
 
@@ -79,8 +79,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           # Maven releasing-related properties
-          OSSRH_USERNAME: cEK6DM3d
-          OSSRH_TOKEN: ${{ secrets.OSSRH_TOKEN }}
+          CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
+          CENTRAL_TOKEN: ${{ secrets.CENTRAL_TOKEN }}
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
           # Hacky way of retrieving the released version tag name through a temporary file
           TMP_TAG_VERSION_NAME_FILE: ${{ runner.temp }}/tag_version_name
