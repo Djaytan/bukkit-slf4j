@@ -8,7 +8,8 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Djaytan_bukkit-slf4j&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Djaytan_bukkit-slf4j)  
 [![semantic-release: conventional-commits](https://img.shields.io/badge/semantic--release-conventional--commits-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8432/badge)](https://www.bestpractices.dev/projects/8432)
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Djaytan/bukkit-slf4j/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Djaytan/bukkit-slf4j)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Djaytan/bukkit-slf4j/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Djaytan/bukkit-slf4j)  
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FDjaytan%2Fbukkit-slf4j.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FDjaytan%2Fbukkit-slf4j?ref=badge_shield)
 
 SLF4J bridge to Bukkit's logger for plugins.
 
@@ -116,3 +117,5 @@ our [Security Policy](docs/SECURITY.md).
 ## Licence
 
 This project is under the [MIT](https://opensource.org/licenses/MIT) license.
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FDjaytan%2Fbukkit-slf4j.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FDjaytan%2Fbukkit-slf4j?ref=badge_large)
