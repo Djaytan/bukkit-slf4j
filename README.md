@@ -1,4 +1,6 @@
-# bukkit-slf4j
+<h1 align="center">Bukkit SLF4J Bridge</h1>
+
+<div align="center">
 
 ![Maven metadata URL](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Frepo1.maven.org%2Fmaven2%2Fcom%2Fdjaytan%2Fbukkit%2Fbukkit-slf4j%2Fmaven-metadata.xml)
 [![CI](https://github.com/Djaytan/bukkit-slf4j/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Djaytan/bukkit-slf4j/actions/workflows/ci.yml)
@@ -8,19 +10,35 @@
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8432/badge)](https://www.bestpractices.dev/projects/8432)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Djaytan/bukkit-slf4j/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Djaytan/bukkit-slf4j)
 
-SLF4J bridge to Bukkit's logger for plugin.
+SLF4J bridge to Bukkit's logger for plugins.
 
-## Why Using It
+</div>
 
-Even if PaperMC provides
-a [`getSLF4JLogger()` method](https://jd.papermc.io/paper/1.18/org/bukkit/plugin/Plugin.html#getSLF4JLogger()),
-you need to inject the retrieved instance in any class that need to log something. When it's time to
-deal with libraries like HikariCP, things become even harder when wanted to have clean console
-output when plugin is running. Finally, the previously mentioned method is not available with
-Spigot.
+## Why Using It?
 
-This solution goes beyond by overcoming all these limitations with a simple approach highly inspired
-from the [slf4j-jdk14](https://github.com/qos-ch/slf4j/tree/master/slf4j-jdk14) one.
+For relying on [SLF4J](https://www.slf4j.org/) as a standard logging solution in a Bukkit
+environment (including forks like Spigot, PaperMC, ...).
+
+Bukkit [exposes a JUL logger](https://github.com/Bukkit/Bukkit/blob/f210234e59275330f83b994e199c76f6abd41ee7/src/main/java/org/bukkit/plugin/Plugin.java#L171-L178),
+[built by itself](https://github.com/Bukkit/Bukkit/blob/f210234e59275330f83b994e199c76f6abd41ee7/src/main/java/org/bukkit/plugin/PluginLogger.java)
+for each plugin individually.
+Because of such setup, the [slf4j-jdk14](https://github.com/qos-ch/slf4j/tree/master/slf4j-jdk14)
+bridge will work **without** taking into account the custom Bukkit's log format. The fact PaperMC
+exposes a [
+`getSLF4JLogger()` method](https://jd.papermc.io/paper/1.18/org/bukkit/plugin/Plugin.html#getSLF4JLogger())
+doesn't really change anything.
+
+While you may consider injecting the plugin's logger instance yourself in each place where one is
+required, this is not convenient nor compatible with any library relying purely on SLF4J like
+[HikariCP](https://github.com/brettwooldridge/HikariCP/blob/a28b6ec81d9a22229553cce84b147c7bdd0c6490/src/main/java/com/zaxxer/hikari/HikariDataSource.java#L42).
+
+This bridge handles for you the Bukkit's logger injection in each place where required, including
+libraries completely agnostic to Bukkit and any other logging implementation.
+You just need to provide the Bukkit logger instance at plugin enabling time, and
+[you are good to go](https://www.slf4j.org/manual.html)!
+
+Its implementation is inspired by
+the [slf4j-jdk14](https://github.com/qos-ch/slf4j/tree/master/slf4j-jdk14) one.
 
 ## Setup
 
@@ -34,13 +52,13 @@ the [Maven Central Repository](https://central.sonatype.com/artifact/com.djaytan
 <dependency>
   <groupId>com.djaytan.bukkit</groupId>
   <artifactId>bukkit-slf4j</artifactId>
-  <version>2.0.0</version>
+  <version>VERSION_HERE</version>
 </dependency>
 ```
 
 ### Gradle
 
-    implementation group: 'com.djaytan.bukkit', name: 'bukkit-slf4j', version: '2.0.0'
+    implementation group: 'com.djaytan.bukkit', name: 'bukkit-slf4j', version: 'VERSION_HERE'
 
 ## How To Use
 
@@ -59,7 +77,7 @@ public class YourPlugin extends JavaPlugin {
 }
 ```
 
-Then you can simply declare a new logger as follows:
+Then you can declare a standard logger injection point as follows:
 
 ```java
 import org.slf4j.Logger;
@@ -67,25 +85,11 @@ import org.slf4j.LoggerFactory;
 
 public class MyClass {
 
-  // The Bukkit logger will be injected
-  private static final Logger log = LoggerFactory.getLogger(LogExample.class);
+  // The bridge will inject the Bukkit logger automatically
+  private static final Logger log = LoggerFactory.getLogger(MyClass.class);
 
-  public void dummyMethod() {
-    log.atInfo().log("Bukkit x SLF4J");
-  }
-}
-```
-
-Or if using Lombok's [`@Slf4j` annotation](https://projectlombok.org/features/log):
-
-```java
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
-public class MyClass {
-
-  public void dummyMethod() {
-    log.atInfo().log("Bukkit x SLF4J");
+  public void myMethod() {
+    log.info("Bukkit x SLF4J");
   }
 }
 ```
