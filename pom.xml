@@ -24,506 +24,501 @@
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.djaytan.bukkit</groupId>
-    <artifactId>bukkit-slf4j</artifactId>
-    <version>0.0.1-DEV-SNAPSHOT</version>
-    <packaging>jar</packaging>
+  <groupId>com.djaytan.bukkit</groupId>
+  <artifactId>bukkit-slf4j</artifactId>
+  <version>0.0.1-DEV-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
-    <name>Bukkit SLF4J</name>
-    <description>The SLF4J implementation for Bukkit</description>
+  <name>Bukkit SLF4J</name>
+  <description>The SLF4J implementation for Bukkit</description>
 
-    <properties>
-        <!-- ==================== General ==================== -->
-        <project.encoding>UTF-8</project.encoding>
-        <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
-        <java.version>17</java.version>
+  <properties>
+    <!-- ==================== General ==================== -->
+    <project.encoding>UTF-8</project.encoding>
+    <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
+    <java.version>17</java.version>
 
-        <!-- Default properties -->
-        <format.perform.skip>false</format.perform.skip>
-        <format.check.skip>true</format.check.skip>
-    </properties>
+    <!-- Default properties -->
+    <format.perform.skip>false</format.perform.skip>
+    <format.check.skip>true</format.check.skip>
+  </properties>
 
-    <dependencies>
-        <!-- SLF4J API -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>2.0.16</version>
-        </dependency>
+  <dependencies>
+    <!-- SLF4J API -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>2.0.16</version>
+    </dependency>
 
-        <!-- Third-party dependencies -->
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>26.0.1</version>
-            <scope>provided</scope>
-        </dependency>
+    <!-- Third-party dependencies -->
+    <dependency>
+      <groupId>org.jetbrains</groupId>
+      <artifactId>annotations</artifactId>
+      <version>26.0.1</version>
+      <scope>provided</scope>
+    </dependency>
 
-        <!-- Test dependencies -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.11.4</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>5.11.4</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.27.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>nl.jqno.equalsverifier</groupId>
-            <artifactId>equalsverifier</artifactId>
-            <version>3.18</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.jparams</groupId>
-            <artifactId>to-string-verifier</artifactId>
-            <version>1.4.8</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <!-- Test dependencies -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.11.4</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <version>5.11.4</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>3.27.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>nl.jqno.equalsverifier</groupId>
+      <artifactId>equalsverifier</artifactId>
+      <version>3.18</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.jparams</groupId>
+      <artifactId>to-string-verifier</artifactId>
+      <version>1.4.8</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
-    <build>
-        <defaultGoal>clean install</defaultGoal>
+  <build>
+    <defaultGoal>clean install</defaultGoal>
 
-        <pluginManagement>
-            <plugins>
-                <!-- Basic Maven plugins -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-clean-plugin</artifactId>
-                    <version>3.4.0</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>3.3.1</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.13.0</version>
-                    <configuration>
-                        <release>${java.version}</release>
-                        <failOnWarning>true</failOnWarning>
-                        <showDeprecation>true</showDeprecation>
-                        <compilerArgs>
-                            <arg>-Xlint:all</arg>
-                            <arg>-Xlint:-exports</arg>
-                            <arg>-Xlint:-requires-automatic</arg>
-                            <arg>-Xlint:-requires-transitive-automatic</arg>
-                            <arg>-Xlint:-serial</arg>
-                        </compilerArgs>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.4.2</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-install-plugin</artifactId>
-                    <version>3.1.3</version>
-                </plugin>
+    <pluginManagement>
+      <plugins>
+        <!-- Basic Maven plugins -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.4.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.3.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.13.0</version>
+          <configuration>
+            <release>${java.version}</release>
+            <failOnWarning>true</failOnWarning>
+            <showDeprecation>true</showDeprecation>
+            <compilerArgs>
+              <arg>-Xlint:all</arg>
+              <arg>-Xlint:-exports</arg>
+              <arg>-Xlint:-requires-automatic</arg>
+              <arg>-Xlint:-requires-transitive-automatic</arg>
+              <arg>-Xlint:-serial</arg>
+            </compilerArgs>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.4.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>3.1.3</version>
+        </plugin>
 
-                <!-- Formatting-related plugins -->
-                <plugin>
-                    <groupId>com.github.ekryd.sortpom</groupId>
-                    <artifactId>sortpom-maven-plugin</artifactId>
-                    <version>3.4.1</version>
-                    <configuration>
-                        <!-- General properties -->
-                        <createBackupFile>false</createBackupFile>
-                        <encoding>${project.encoding}</encoding>
+        <!-- Formatting-related plugins -->
+        <plugin>
+          <groupId>com.github.ekryd.sortpom</groupId>
+          <artifactId>sortpom-maven-plugin</artifactId>
+          <version>4.0.0</version>
+          <configuration>
+            <!-- General properties -->
+            <predefinedSortOrder>custom_1</predefinedSortOrder>
+            <createBackupFile>false</createBackupFile>
 
-                        <!-- Formatting properties -->
-                        <expandEmptyElements>false</expandEmptyElements>
-                        <spaceBeforeCloseEmptyElement>true</spaceBeforeCloseEmptyElement>
-                        <lineSeparator>\n</lineSeparator>
-                        <nrOfIndentSpace>4</nrOfIndentSpace>
-                        <ignoreLineSeparators>false</ignoreLineSeparators>
+            <!-- Formatting properties -->
+            <expandEmptyElements>false</expandEmptyElements>
+            <spaceBeforeCloseEmptyElement>true</spaceBeforeCloseEmptyElement>
+            <lineSeparator>\n</lineSeparator>
+            <ignoreLineSeparators>false</ignoreLineSeparators>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>com.spotify.fmt</groupId>
+          <artifactId>fmt-maven-plugin</artifactId>
+          <version>2.25</version>
+        </plugin>
+        <plugin>
+          <groupId>com.mycila</groupId>
+          <artifactId>license-maven-plugin</artifactId>
+          <version>4.6</version>
+          <configuration>
+            <properties>
+              <owner>Loïc DUBOIS-TERMOZ (alias Djaytan)</owner>
+            </properties>
+            <licenseSets>
+              <licenseSet>
+                <header>com/mycila/maven/plugin/license/templates/MIT.txt</header>
+                <excludes>
+                  <exclude>src/main/resources/**</exclude>
+                  <exclude>src/test/resources/**</exclude>
+                  <exclude>scripts/**</exclude>
+                  <exclude>.editorconfig</exclude>
+                  <exclude>release.config.js</exclude>
+                  <exclude>jitpack.yml</exclude>
+                </excludes>
+              </licenseSet>
+            </licenseSets>
+          </configuration>
+        </plugin>
 
-                        <!-- Sorting properties -->
-                        <predefinedSortOrder>custom_1</predefinedSortOrder>
-                        <sortModules>true</sortModules>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>com.spotify.fmt</groupId>
-                    <artifactId>fmt-maven-plugin</artifactId>
-                    <version>2.25</version>
-                </plugin>
-                <plugin>
-                    <groupId>com.mycila</groupId>
-                    <artifactId>license-maven-plugin</artifactId>
-                    <version>4.6</version>
-                    <configuration>
-                        <properties>
-                            <owner>Loïc DUBOIS-TERMOZ (alias Djaytan)</owner>
-                        </properties>
-                        <licenseSets>
-                            <licenseSet>
-                                <header>com/mycila/maven/plugin/license/templates/MIT.txt</header>
-                                <excludes>
-                                    <exclude>src/main/resources/**</exclude>
-                                    <exclude>src/test/resources/**</exclude>
-                                    <exclude>scripts/**</exclude>
-                                    <exclude>.editorconfig</exclude>
-                                    <exclude>release.config.js</exclude>
-                                    <exclude>jitpack.yml</exclude>
-                                </excludes>
-                            </licenseSet>
-                        </licenseSets>
-                    </configuration>
-                </plugin>
-
-                <!-- Enforcement-related plugins -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <version>3.8.1</version>
-                    <configuration>
-                        <failBuild>true</failBuild>
-                        <failOnWarning>true</failOnWarning>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>3.5.0</version>
-                    <configuration>
-                        <fail>true</fail>
-                        <failFast>true</failFast>
-                        <rules>
-                            <banDuplicatePomDependencyVersions />
-                            <dependencyConvergence />
-                            <reactorModuleConvergence />
-                            <requireJavaVersion>
-                                <version>[17,)</version>
-                            </requireJavaVersion>
-                            <requireMavenVersion>
-                                <version>[3.8,)</version>
-                            </requireMavenVersion>
-                            <requirePluginVersions>
-                                <message>Best Practice is to always define plugin versions!</message>
-                                <!-- The Nexus one replaces the Maven deploy plugin -->
-                                <!-- "site" phase is not applicable for this project -->
-                                <unCheckedPluginList>org.apache.maven.plugins:maven-deploy-plugin,
+        <!-- Enforcement-related plugins -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>3.8.1</version>
+          <configuration>
+            <failBuild>true</failBuild>
+            <failOnWarning>true</failOnWarning>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>3.5.0</version>
+          <configuration>
+            <fail>true</fail>
+            <failFast>true</failFast>
+            <rules>
+              <banDuplicatePomDependencyVersions />
+              <dependencyConvergence />
+              <reactorModuleConvergence />
+              <requireJavaVersion>
+                <version>[17,)</version>
+              </requireJavaVersion>
+              <requireMavenVersion>
+                <version>[3.8,)</version>
+              </requireMavenVersion>
+              <requirePluginVersions>
+                <message>Best Practice is to always define plugin versions!</message>
+                <!-- The Nexus one replaces the Maven deploy plugin -->
+                <!-- "site" phase is not applicable for this project -->
+                <unCheckedPluginList>org.apache.maven.plugins:maven-deploy-plugin,
                                     org.apache.maven.plugins:maven-site-plugin</unCheckedPluginList>
-                            </requirePluginVersions>
-                            <requireUpperBoundDeps />
-                        </rules>
-                    </configuration>
-                </plugin>
+              </requirePluginVersions>
+              <requireUpperBoundDeps />
+            </rules>
+          </configuration>
+        </plugin>
 
-                <!-- Test-related plugins -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.5.2</version>
-                    <configuration>
-                        <argLine>@{argLine} -Xshare:off</argLine>
-                        <parallel>all</parallel>
-                        <redirectTestOutputToFile>true</redirectTestOutputToFile>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.jacoco</groupId>
-                    <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.12</version>
-                </plugin>
+        <!-- Test-related plugins -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.5.2</version>
+          <configuration>
+            <argLine>@{argLine} -Xshare:off</argLine>
+            <parallel>all</parallel>
+            <redirectTestOutputToFile>true</redirectTestOutputToFile>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.8.12</version>
+        </plugin>
 
-                <!-- Release-related plugins -->
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>versions-maven-plugin</artifactId>
-                    <version>2.18.0</version>
-                    <configuration>
-                        <generateBackupPoms>false</generateBackupPoms>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>3.3.1</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.11.2</version>
-                    <configuration>
-                        <quiet>true</quiet>
-                        <additionalJOptions>
-                            <additionalJOption>-Xdoclint:all,-html</additionalJOption>
-                        </additionalJOptions>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-gpg-plugin</artifactId>
-                    <version>3.2.7</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.sonatype.central</groupId>
-                    <artifactId>central-publishing-maven-plugin</artifactId>
-                    <version>0.6.0</version>
-                    <extensions>true</extensions>
-                    <configuration>
-                        <publishingServerId>central</publishingServerId>
-                        <tokenAuth>true</tokenAuth>
-                        <autoPublish>true</autoPublish>
-                        <waitUntil>published</waitUntil>
-                    </configuration>
-                </plugin>
+        <!-- Release-related plugins -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>versions-maven-plugin</artifactId>
+          <version>2.18.0</version>
+          <configuration>
+            <generateBackupPoms>false</generateBackupPoms>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>3.3.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>3.11.2</version>
+          <configuration>
+            <quiet>true</quiet>
+            <additionalJOptions>
+              <additionalJOption>-Xdoclint:all,-html</additionalJOption>
+            </additionalJOptions>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-gpg-plugin</artifactId>
+          <version>3.2.7</version>
+        </plugin>
+        <plugin>
+          <groupId>org.sonatype.central</groupId>
+          <artifactId>central-publishing-maven-plugin</artifactId>
+          <version>0.6.0</version>
+          <extensions>true</extensions>
+          <configuration>
+            <publishingServerId>central</publishingServerId>
+            <tokenAuth>true</tokenAuth>
+            <autoPublish>true</autoPublish>
+            <waitUntil>published</waitUntil>
+          </configuration>
+        </plugin>
 
-                <!-- SonarCloud code quality scans -->
-                <plugin>
-                    <groupId>org.sonarsource.scanner.maven</groupId>
-                    <artifactId>sonar-maven-plugin</artifactId>
-                    <version>5.0.0.4389</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <!-- SonarCloud code quality scans -->
+        <plugin>
+          <groupId>org.sonarsource.scanner.maven</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>5.0.0.4389</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
 
+    <plugins>
+      <!-- Formatting-related plugins -->
+      <plugin>
+        <groupId>com.github.ekryd.sortpom</groupId>
+        <artifactId>sortpom-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>format</id>
+            <goals>
+              <goal>sort</goal>
+            </goals>
+            <configuration>
+              <skip>${format.perform.skip}</skip>
+            </configuration>
+          </execution>
+          <execution>
+            <id>check</id>
+            <goals>
+              <goal>verify</goal>
+            </goals>
+            <!-- Force "validate" phase to raise error as early as possible -->
+            <phase>validate</phase>
+            <configuration>
+              <skip>${format.check.skip}</skip>
+              <verifyFail>Stop</verifyFail>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.spotify.fmt</groupId>
+        <artifactId>fmt-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>format</id>
+            <goals>
+              <goal>format</goal>
+            </goals>
+            <configuration>
+              <skip>${format.perform.skip}</skip>
+            </configuration>
+          </execution>
+          <execution>
+            <id>check</id>
+            <goals>
+              <goal>check</goal>
+            </goals>
+            <!-- Force "validate" phase to raise error as early as possible -->
+            <phase>validate</phase>
+            <configuration>
+              <skip>${format.check.skip}</skip>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.mycila</groupId>
+        <artifactId>license-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>format</id>
+            <goals>
+              <goal>format</goal>
+            </goals>
+            <!-- Required since plugin is not hooked to any lifecycle phase by default -->
+            <phase>process-sources</phase>
+            <configuration>
+              <skip>${format.perform.skip}</skip>
+            </configuration>
+          </execution>
+          <execution>
+            <id>check</id>
+            <goals>
+              <goal>check</goal>
+            </goals>
+            <!-- Force "validate" phase to raise error as early as possible -->
+            <phase>validate</phase>
+            <configuration>
+              <failIfMissing>true</failIfMissing>
+              <failIfUnknown>true</failIfUnknown>
+              <skip>${format.check.skip}</skip>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Enforcement-related plugins -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>analyze-only</goal>
+              <goal>analyze-dep-mgt</goal>
+              <goal>analyze-duplicate</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Test-related plugins -->
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <url>https://github.com/Djaytan/bukkit-slf4j</url>
+  <inceptionYear>2023</inceptionYear>
+
+  <licenses>
+    <license>
+      <name>MIT</name>
+      <url>https://opensource.org/licenses/MIT</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>Loïc DUBOIS-TERMOZ (alias Djaytan)</name>
+      <email>26904516+Djaytan@users.noreply.github.com</email>
+      <organization>Djaytan</organization>
+      <organizationUrl>https://github.com/Djaytan/bukkit-slf4j</organizationUrl>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:${project.scm.url}</connection>
+    <developerConnection>scm:git:${project.scm.url}</developerConnection>
+    <url>https://github.com/Djaytan/bukkit-slf4j.git</url>
+  </scm>
+
+  <issueManagement>
+    <url>https://github.com/Djaytan/bukkit-slf4j/issues</url>
+  </issueManagement>
+
+  <ciManagement>
+    <url>https://github.com/Djaytan/bukkit-slf4j/actions</url>
+  </ciManagement>
+
+  <profiles>
+    <profile>
+      <id>ci</id>
+      <properties>
+        <format.perform.skip>true</format.perform.skip>
+        <format.check.skip>false</format.check.skip>
+      </properties>
+    </profile>
+    <profile>
+      <id>fast</id>
+      <properties>
+        <format.perform.skip>true</format.perform.skip>
+        <format.check.skip>true</format.check.skip>
+        <enforcer.skip>true</enforcer.skip>
+        <jacoco.skip>true</jacoco.skip>
+        <mdep.analyze.skip>true</mdep.analyze.skip>
+        <skipTests>true</skipTests>
+        <maven.test.skip>true</maven.test.skip>
+      </properties>
+    </profile>
+    <profile>
+      <id>release</id>
+      <build>
         <plugins>
-            <!-- Formatting-related plugins -->
-            <plugin>
-                <groupId>com.github.ekryd.sortpom</groupId>
-                <artifactId>sortpom-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>format</id>
-                        <goals>
-                            <goal>sort</goal>
-                        </goals>
-                        <configuration>
-                            <skip>${format.perform.skip}</skip>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>check</id>
-                        <goals>
-                            <goal>verify</goal>
-                        </goals>
-                        <!-- Force "validate" phase to raise error as early as possible -->
-                        <phase>validate</phase>
-                        <configuration>
-                            <skip>${format.check.skip}</skip>
-                            <verifyFail>Stop</verifyFail>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>com.spotify.fmt</groupId>
-                <artifactId>fmt-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>format</id>
-                        <goals>
-                            <goal>format</goal>
-                        </goals>
-                        <configuration>
-                            <skip>${format.perform.skip}</skip>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>check</id>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <!-- Force "validate" phase to raise error as early as possible -->
-                        <phase>validate</phase>
-                        <configuration>
-                            <skip>${format.check.skip}</skip>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>com.mycila</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>format</id>
-                        <goals>
-                            <goal>format</goal>
-                        </goals>
-                        <!-- Required since plugin is not hooked to any lifecycle phase by default -->
-                        <phase>process-sources</phase>
-                        <configuration>
-                            <skip>${format.perform.skip}</skip>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>check</id>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <!-- Force "validate" phase to raise error as early as possible -->
-                        <phase>validate</phase>
-                        <configuration>
-                            <failIfMissing>true</failIfMissing>
-                            <failIfUnknown>true</failIfUnknown>
-                            <skip>${format.check.skip}</skip>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- Enforcement-related plugins -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>analyze-only</goal>
-                            <goal>analyze-dep-mgt</goal>
-                            <goal>analyze-duplicate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- Test-related plugins -->
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>prepare-agent</id>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>report</id>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>jar-no-fork</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
         </plugins>
-    </build>
-
-    <url>https://github.com/Djaytan/bukkit-slf4j</url>
-    <inceptionYear>2023</inceptionYear>
-
-    <licenses>
-        <license>
-            <name>MIT</name>
-            <url>https://opensource.org/licenses/MIT</url>
-        </license>
-    </licenses>
-
-    <developers>
-        <developer>
-            <name>Loïc DUBOIS-TERMOZ (alias Djaytan)</name>
-            <email>26904516+Djaytan@users.noreply.github.com</email>
-            <organization>Djaytan</organization>
-            <organizationUrl>https://github.com/Djaytan/bukkit-slf4j</organizationUrl>
-        </developer>
-    </developers>
-
-    <scm>
-        <connection>scm:git:${project.scm.url}</connection>
-        <developerConnection>scm:git:${project.scm.url}</developerConnection>
-        <url>https://github.com/Djaytan/bukkit-slf4j.git</url>
-    </scm>
-
-    <issueManagement>
-        <url>https://github.com/Djaytan/bukkit-slf4j/issues</url>
-    </issueManagement>
-
-    <ciManagement>
-        <url>https://github.com/Djaytan/bukkit-slf4j/actions</url>
-    </ciManagement>
-
-    <profiles>
-        <profile>
-            <id>ci</id>
-            <properties>
-                <format.perform.skip>true</format.perform.skip>
-                <format.check.skip>false</format.check.skip>
-            </properties>
-        </profile>
-        <profile>
-            <id>fast</id>
-            <properties>
-                <format.perform.skip>true</format.perform.skip>
-                <format.check.skip>true</format.check.skip>
-                <enforcer.skip>true</enforcer.skip>
-                <jacoco.skip>true</jacoco.skip>
-                <mdep.analyze.skip>true</mdep.analyze.skip>
-                <skipTests>true</skipTests>
-                <maven.test.skip>true</maven.test.skip>
-            </properties>
-        </profile>
-        <profile>
-            <id>release</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>jar-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-javadoc-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>jar</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+      </build>
+    </profile>
+  </profiles>
 </project>
