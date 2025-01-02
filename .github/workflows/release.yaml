@@ -72,7 +72,7 @@ jobs:
           server-username: CENTRAL_USERNAME
           server-password: CENTRAL_TOKEN
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
-          gpg-passphrase: GPG_PASSPHRASE
+          gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
       - name: Release
         id: release
@@ -81,7 +81,7 @@ jobs:
           # Maven releasing-related properties
           CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
           CENTRAL_TOKEN: ${{ secrets.CENTRAL_TOKEN }}
-          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
           # Hacky way of retrieving the released version tag name through a temporary file
           TMP_TAG_VERSION_NAME_FILE: ${{ runner.temp }}/tag_version_name
         working-directory: .github/
