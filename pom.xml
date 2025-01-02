@@ -275,6 +275,7 @@
               <goal>analyze-only</goal>
               <goal>analyze-dep-mgt</goal>
               <goal>analyze-duplicate</goal>
+              <goal>analyze-exclusions</goal>
             </goals>
           </execution>
         </executions>
