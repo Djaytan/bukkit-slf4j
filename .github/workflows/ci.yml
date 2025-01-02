@@ -53,7 +53,7 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@7a6d8a8234af8eb26422e24e3006232cccaa061b # v4.6.0
         with:
-          java-version: 17
+          java-version: 21
           distribution: temurin
           cache: maven
 
@@ -73,8 +73,7 @@ jobs:
           SONAR_ORGANIZATION="$(echo '${{ github.repository_owner }}' | awk '{print tolower($0)}')"
           SONAR_PROJECT_KEY="$(echo '${{ github.repository }}' | sed 's/\//_/')"
 
-          mvn verify sonar:sonar --activate-profiles ci -Dstyle.color=always \
-            --batch-mode --errors --strict-checksums --update-snapshots \
+          ./mvnw verify sonar:sonar --batch-mode -Dstyle.color=always \
             -Dsonar.host.url="${SONAR_HOST_URL}" \
             -Dsonar.organization="${SONAR_ORGANIZATION}" \
             -Dsonar.projectKey="${SONAR_PROJECT_KEY}"
@@ -113,7 +112,7 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@7a6d8a8234af8eb26422e24e3006232cccaa061b # v4.6.0
         with:
-          java-version: 17
+          java-version: 21
           distribution: temurin
           cache: maven
 
@@ -123,9 +122,7 @@ jobs:
           languages: java
 
       - name: Build
-        run: |
-          mvn package --activate-profiles fast -Dstyle.color=always \
-            --batch-mode --errors --strict-checksums --update-snapshots --fail-fast
+        run: ./mvnw package --batch-mode -Dstyle.color=always -DskipTests
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@48ab28a6f5dbc2a99bf1e0131198dd8f1df78169 # v3.28.0
