@@ -7,6 +7,10 @@
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/exec": "6.0.3"
   },
+  "overrides": {
+    "conventional-changelog-conventionalcommits_": "Temporary workaround: https://github.com/semantic-release/release-notes-generator/issues/657",
+    "conventional-changelog-conventionalcommits": ">= 8.0.0"
+  },
   "engines": {
     "node": "^22.0.0"
   },
