@@ -16,11 +16,9 @@ module.exports = {
       {type: 'chore', section: '🧹 House Keeping'}
     ]
   },
-  changelogFile: process.env.CHANGELOG_FILE,
   plugins: [
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
-    '@semantic-release/changelog',
     [
       '@semantic-release/github',
       {
@@ -30,8 +28,7 @@ module.exports = {
     [
       '@semantic-release/exec',
       {
-        publishCmd: './scripts/publish_maven_artifacts.sh ${nextRelease.version}',
-        successCmd: `echo '$\{nextRelease.gitTag}' > '${process.env.TMP_TAG_VERSION_NAME_FILE}'`
+        publishCmd: './scripts/publish_maven_artifacts.sh ${nextRelease.version}'
       }
     ],
   ]
