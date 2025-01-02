@@ -16,9 +16,6 @@ jobs:
       issues: write # Required to comment on released issues
       pull-requests: write # Required to comment on released pull requests
 
-    env:
-      CHANGELOG_FILE: ${{ github.workspace }}/docs/CHANGELOG.md
-
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@0080882f6c36860b6ba35c610c98ce87d4e2f26f # v2.10.2
@@ -40,16 +37,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
+          persist-credentials: false
           fetch-depth: 0 # Required by semantic-release
-
-      - name: Config Git user as release bot
-        env:
-          # https://github.com/orgs/community/discussions/26560#discussioncomment-3252339
-          RELEASE_BOT_NAME: 'github-actions[bot]'
-          RELEASE_BOT_EMAIL: '41898282+github-actions[bot]@users.noreply.github.com'
-        run: |
-          git config --global user.name "${RELEASE_BOT_NAME}"
-          git config --global user.email "${RELEASE_BOT_EMAIL}"
 
       - name: Setup Node.js
         uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
@@ -78,28 +67,8 @@ jobs:
         id: release
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          # Maven releasing-related properties
           CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
           CENTRAL_TOKEN: ${{ secrets.CENTRAL_TOKEN }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
-          # Hacky way of retrieving the released version tag name through a temporary file
-          TMP_TAG_VERSION_NAME_FILE: ${{ runner.temp }}/tag_version_name
         working-directory: .github/
-        run: |
-          npx --no-install semantic-release
-          echo "tag=$(cat "${TMP_TAG_VERSION_NAME_FILE}")" >> "${GITHUB_OUTPUT}"
-
-      - name: Create a PR for creating/updating the changelog file
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-          CHANGELOG_BRANCH_NAME: changelog/${{ steps.release.outputs.tag }}
-        run: |
-          git switch --create "${CHANGELOG_BRANCH_NAME}"
-          git add "${CHANGELOG_FILE}"
-          git commit --message='docs(changelog): release ${{ steps.release.outputs.tag }}' "${CHANGELOG_FILE}"
-          git push --set-upstream origin "${CHANGELOG_BRANCH_NAME}"
-
-          gh pr create --fill \
-            --label 't:release' \
-            --base ${{ github.ref_name }} \
-            --head "${CHANGELOG_BRANCH_NAME}"
+        run: npx --no-install semantic-release
