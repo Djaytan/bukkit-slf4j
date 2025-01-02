@@ -32,7 +32,6 @@ jobs:
             uploads.github.com:443
             repo.maven.apache.org:443
             central.sonatype.com:443
-            oss.sonatype.org:443
             jitpack.io:443
             repo.papermc.io:443
             api.nuget.org:443
