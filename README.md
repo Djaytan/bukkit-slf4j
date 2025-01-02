@@ -24,17 +24,18 @@ Bukkit [exposes a JUL logger](https://github.com/Bukkit/Bukkit/blob/f210234e5927
 [built by itself](https://github.com/Bukkit/Bukkit/blob/f210234e59275330f83b994e199c76f6abd41ee7/src/main/java/org/bukkit/plugin/PluginLogger.java)
 for each plugin individually.
 Because of such setup, the [slf4j-jdk14](https://github.com/qos-ch/slf4j/tree/master/slf4j-jdk14)
-bridge will work **without** taking into account the custom Bukkit's log format. The fact PaperMC
-exposes a [
+bridge will work **without** taking into
+account [the custom Bukkit's log format](https://github.com/Bukkit/Bukkit/blob/f210234e59275330f83b994e199c76f6abd41ee7/src/main/java/org/bukkit/plugin/PluginLogger.java#L22-L34).
+The fact PaperMC exposes a [
 `getSLF4JLogger()` method](https://jd.papermc.io/paper/1.18/org/bukkit/plugin/Plugin.html#getSLF4JLogger())
 doesn't really change anything.
 
 While you may consider injecting the plugin's logger instance yourself in each place where one is
-required, this is not convenient nor compatible with any library relying purely on SLF4J like
+required, this is not convenient nor applicable for any library relying purely on SLF4J like
 [HikariCP](https://github.com/brettwooldridge/HikariCP/blob/a28b6ec81d9a22229553cce84b147c7bdd0c6490/src/main/java/com/zaxxer/hikari/HikariDataSource.java#L42).
 
 This bridge handles for you the Bukkit's logger injection in each place where required, including
-libraries completely agnostic to Bukkit and any other logging implementation.
+libraries completely agnostic to Bukkit and/or any logging implementation.
 You just need to provide the Bukkit logger instance at plugin enabling time, and
 [you are good to go](https://www.slf4j.org/manual.html)!
 
