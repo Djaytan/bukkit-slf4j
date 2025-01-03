@@ -20,21 +20,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.djaytan.bukkit.slf4j;
+import com.djaytan.bukkit.slf4j.internal.BukkitLoggerServiceProvider;
+import org.slf4j.spi.SLF4JServiceProvider;
 
-import com.jparams.verifier.tostring.ToStringVerifier;
-import nl.jqno.equalsverifier.EqualsVerifier;
-import org.junit.jupiter.api.Test;
+module bukkit.slf4j {
+  requires java.logging;
+  requires org.jetbrains.annotations;
+  requires org.slf4j;
 
-final class Slf4jLogRecordTest {
+  exports com.djaytan.bukkit.slf4j.api;
 
-  @Test
-  void equalsAndHashcodeVerification() {
-    EqualsVerifier.forClass(Slf4jLogRecord.class).verify();
-  }
-
-  @Test
-  void toStringVerification() {
-    ToStringVerifier.forClass(Slf4jLogRecord.class).verify();
-  }
+  provides SLF4JServiceProvider with
+      BukkitLoggerServiceProvider;
 }

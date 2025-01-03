@@ -20,11 +20,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.djaytan.bukkit.slf4j;
+package com.djaytan.bukkit.slf4j.api;
 
+import com.djaytan.bukkit.slf4j.internal.BukkitLoggerAdapter;
+import org.jetbrains.annotations.ApiStatus.Internal;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.TestOnly;
 import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 
@@ -37,6 +40,11 @@ import org.slf4j.Logger;
 public final class BukkitLoggerFactory implements ILoggerFactory {
 
   private static java.util.logging.Logger staticLogger;
+
+  @Internal
+  public BukkitLoggerFactory() {
+    // Bukkit logger must be provided by the library consumer
+  }
 
   /**
    * Provides the Bukkit logger to be returned by any subsequent call to {@link
@@ -55,11 +63,8 @@ public final class BukkitLoggerFactory implements ILoggerFactory {
     staticLogger = jdk14Logger;
   }
 
-  /**
-   * Resets the Bukkit logger.
-   *
-   * <p>For testing purposes only.
-   */
+  /** Resets the Bukkit logger. */
+  @TestOnly
   static void resetBukkitLogger() {
     staticLogger = null;
   }
