@@ -20,7 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.djaytan.bukkit.slf4j;
+package com.djaytan.bukkit.slf4j.internal;
 
 import java.util.ResourceBundle;
 import java.util.logging.LogRecord;
@@ -93,8 +93,8 @@ final class JulLogRecordFactory {
    * instead since that's the official and supported way for answering our specific need here. If we
    * want to improve the implementation, it seems to be the way to go. The JUL implementation has
    * gone into this direction, for example, since a recent version of JDK higher than 8 (see the
-   * {@link LogRecord#inferCaller()} method for details). Furthermore, it will make the code more
-   * testable (that's not fully the case with the current implementation because of <code>
+   * {@link LogRecord}{@code #inferCaller()} method for details). Furthermore, it will make the code
+   * more testable (that's not fully the case with the current implementation because of <code>
    * new Throwable()</code> call).
    *
    * @param adapterOrSubstituteCallerFqcn The adapter or substitute SLF4J logger fully qualified
@@ -104,7 +104,7 @@ final class JulLogRecordFactory {
   private static @Nullable CallerLocation inferCallerLocation(
       @NotNull String adapterOrSubstituteCallerFqcn) {
     // The first element is the top-most call on the execution stack i.e. always the following line:
-    // com.djaytan.bukkit.slf4j/com.djaytan.bukkit.slf4j.JulLogRecordFactory.inferCallerLocation(JulLogRecordFactory.java:<line_number>)
+    // com.djaytan.bukkit.slf4j/com.djaytan.bukkit.slf4j.internal.JulLogRecordFactory.inferCallerLocation(JulLogRecordFactory.java:<line_number>)
     StackTraceElement[] stackTraceElements = new Throwable().getStackTrace();
 
     // First, search for a method in a logger implementation class.

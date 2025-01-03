@@ -20,10 +20,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.djaytan.bukkit.slf4j;
+package com.djaytan.bukkit.slf4j.api;
 
-import static com.djaytan.bukkit.slf4j.TestHelper.executeLogging;
-import static com.djaytan.bukkit.slf4j.TestHelper.testLoggingExecutionOutputExpectedMessage;
+import static com.djaytan.bukkit.slf4j.api.TestHelper.executeLogging;
+import static com.djaytan.bukkit.slf4j.api.TestHelper.testLoggingExecutionOutputExpectedMessage;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDateTime;
@@ -89,11 +89,13 @@ final class ArgumentsTests {
   }
 
   @Test
+  @SuppressWarnings({"java:S3457", "LoggingPlaceholderCountMatchesArgumentCount"})
   void exceeding_arguments_shall_be_ignored() {
     testLoggingExecutionOutputExpectedMessage(slf4jLogger -> slf4jLogger.info("{}", 14, 15), "14");
   }
 
   @Test
+  @SuppressWarnings({"java:S3457", "LoggingPlaceholderCountMatchesArgumentCount"})
   void templates_must_remain_for_missing_argument() {
     testLoggingExecutionOutputExpectedMessage(
         slf4jLogger -> slf4jLogger.info("{}, {}", 14), "14, {}");
@@ -118,6 +120,7 @@ final class ArgumentsTests {
   }
 
   @Test
+  @SuppressWarnings({"java:S3457", "LoggingPlaceholderCountMatchesArgumentCount"})
   void last_argument_is_treated_specially_if_it_is_a_throwable_even_with_missing_argument() {
     // Arrange
     var throwable = new IllegalStateException("test invalid state");

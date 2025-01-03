@@ -20,8 +20,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.djaytan.bukkit.slf4j;
+package com.djaytan.bukkit.slf4j.internal;
 
+import com.djaytan.bukkit.slf4j.api.BukkitLoggerFactory;
 import org.slf4j.ILoggerFactory;
 import org.slf4j.IMarkerFactory;
 import org.slf4j.helpers.BasicMDCAdapter;

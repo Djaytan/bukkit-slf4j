@@ -20,7 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.djaytan.bukkit.slf4j;
+package com.djaytan.bukkit.slf4j.internal;
 
 import java.util.Arrays;
 import java.util.Objects;

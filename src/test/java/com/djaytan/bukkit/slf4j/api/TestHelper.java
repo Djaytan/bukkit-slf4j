@@ -20,10 +20,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.djaytan.bukkit.slf4j;
+package com.djaytan.bukkit.slf4j.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.djaytan.bukkit.slf4j.internal.BukkitLoggerServiceProvider;
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.function.Consumer;

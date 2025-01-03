@@ -20,7 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.djaytan.bukkit.slf4j;
+package com.djaytan.bukkit.slf4j.internal;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,11 +33,11 @@ import org.slf4j.helpers.LegacyAbstractLogger;
  * This class is responsible for adapting the Bukkit logger instance against the SLF4J {@link
  * org.slf4j.Logger} interface.
  */
-final class BukkitLoggerAdapter extends LegacyAbstractLogger {
+public final class BukkitLoggerAdapter extends LegacyAbstractLogger {
 
   private final transient Logger logger;
 
-  BukkitLoggerAdapter(@NotNull Logger logger, @NotNull String name) {
+  public BukkitLoggerAdapter(@NotNull Logger logger, @NotNull String name) {
     super.name = name;
     this.logger = logger;
   }

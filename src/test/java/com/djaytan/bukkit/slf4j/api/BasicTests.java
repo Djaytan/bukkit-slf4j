@@ -20,13 +20,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.djaytan.bukkit.slf4j;
+package com.djaytan.bukkit.slf4j.api;
 
-import static com.djaytan.bukkit.slf4j.TestHelper.SAMPLE_LOGGER_NAME;
-import static com.djaytan.bukkit.slf4j.TestHelper.executeLogging;
-import static com.djaytan.bukkit.slf4j.TestHelper.flushHandlers;
-import static com.djaytan.bukkit.slf4j.TestHelper.getJulStreamLogger;
-import static com.djaytan.bukkit.slf4j.TestHelper.setJulLoggerLevel;
+import static com.djaytan.bukkit.slf4j.api.TestHelper.SAMPLE_LOGGER_NAME;
+import static com.djaytan.bukkit.slf4j.api.TestHelper.executeLogging;
+import static com.djaytan.bukkit.slf4j.api.TestHelper.flushHandlers;
+import static com.djaytan.bukkit.slf4j.api.TestHelper.getJulStreamLogger;
+import static com.djaytan.bukkit.slf4j.api.TestHelper.setJulLoggerLevel;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
