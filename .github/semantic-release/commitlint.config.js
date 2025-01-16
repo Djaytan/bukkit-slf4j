@@ -3,8 +3,8 @@ module.exports = {
   rules: {
     // Project specific rules
     'scope-enum': [2, 'always', [
-      'readme', 'contributing', 'changelog', 'packaging', 'deps', 'other',
-      'github', 'renovate', 'release'
+      'readme', 'contributing', 'packaging', 'deps', 'other', 'github',
+      'renovate', 'release'
     ]],
 
     // Compliant with Angular conventions (getting rid of "style" and "chore" types)

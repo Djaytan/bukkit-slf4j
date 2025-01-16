@@ -118,7 +118,7 @@ from [Angular project](https://github.com/angular/angular/blob/main/CONTRIBUTING
   │       │             │
   │       │             └─⫸ Summary in present tense. Not capitalized. No period at the end.
   │       │
-  │       └─⫸ Commit Scope: readme|contributing|changelog|packaging|deps|other|github|renovate|release
+  │       └─⫸ Commit Scope: readme|contributing|packaging|deps|other|github|renovate|release
   │
   └─⫸ Commit Type: feat|fix|perf|refactor|docs|test|build|ci|chore
 ```
@@ -149,7 +149,6 @@ No scope should be specified except for some changes.
 * **readme**: used for changes updating the `README.md` file
 * **contributing**: used for changes updating the contribution-related
   files: `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md` & `SECURITY.md`
-* **changelog**: used for changes updating the `CHANGELOG.md` file
 
 ###### Specific to the `build` type
 
