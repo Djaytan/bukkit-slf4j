@@ -28,7 +28,7 @@ module.exports = {
     [
       '@semantic-release/exec',
       {
-        publishCmd: './scripts/publish_maven_artifacts.sh ${nextRelease.version}'
+        publishCmd: '../scripts/publish_maven_artifacts.sh ${nextRelease.version}'
       }
     ],
   ]
