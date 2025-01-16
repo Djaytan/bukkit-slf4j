@@ -64,7 +64,6 @@ jobs:
           gpg-passphrase: MAVEN_GPG_PASSPHRASE
 
       - name: Release
-        id: release
         env:
           GITHUB_TOKEN: ${{ github.token }}
           CENTRAL_USERNAME: ${{ secrets.CENTRAL_USERNAME }}
