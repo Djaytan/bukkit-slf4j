@@ -18,9 +18,6 @@ jobs:
     permissions:
       contents: read
 
-    env:
-      COMMITLINT_CONFIG_FILE: ${{ github.workspace }}/.github/commitlint.config.js
-
     steps:
       - name: Harden runner
         uses: step-security/harden-runner@0080882f6c36860b6ba35c610c98ce87d4e2f26f # v2.10.2
@@ -43,21 +40,21 @@ jobs:
         with:
           node-version: lts/jod
           cache: npm
-          cache-dependency-path: .github/package-lock.json
+          cache-dependency-path: .github/semantic-release/package-lock.json
 
       - name: Install commitlint
-        working-directory: .github/
+        working-directory: .github/semantic-release/
         run: npm clean-install
 
       - name: Validate current commit (last commit) with commitlint
         if: ${{ github.event_name != 'pull_request' }}
-        working-directory: .github/
-        run: npx --no-install commitlint --config "${COMMITLINT_CONFIG_FILE}" --verbose --last
+        working-directory: .github/semantic-release/
+        run: npx --no-install commitlint --verbose --last
 
       - name: Validate PR commits with commitlint
         if: ${{ github.event_name == 'pull_request' }}
-        working-directory: .github/
+        working-directory: .github/semantic-release/
         run: |
-          npx --no-install commitlint --config "${COMMITLINT_CONFIG_FILE}" --verbose \
+          npx --no-install commitlint --verbose \
             --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} \
             --to ${{ github.event.pull_request.head.sha }}
