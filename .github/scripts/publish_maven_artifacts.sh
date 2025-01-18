@@ -18,13 +18,13 @@ main() {
 
   cd "${ROOT_REPOSITORY_DIR}"
 
-  $mvnw versions:set -DnewVersion="${NEW_VERSION}" --batch-mode -Dstyle.color=always
-  $mvnw deploy -Prelease --batch-mode -Dstyle.color=always
+  $mvnw versions:set -DnewVersion="${NEW_VERSION}"
+  $mvnw deploy -Prelease
 
   echo "The new version ${NEW_VERSION} has been published successfully!"
 
   echo 'Putting back the DEV version...'
-  $mvnw versions:set -DnewVersion="${DEV_VERSION}" --batch-mode -Dstyle.color=always
+  $mvnw versions:set -DnewVersion="${DEV_VERSION}"
 }
 
 main
