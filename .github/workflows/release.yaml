@@ -70,5 +70,6 @@ jobs:
           CENTRAL_TOKEN: ${{ secrets.CENTRAL_TOKEN }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
           MAVEN_ARGS: --batch-mode -Dstyle.color=always
+          MAVEN_ROOT_PROJECT_DIR: ${{ github.workspace }}
         working-directory: .github/semantic-release/
         run: npx --no-install semantic-release
