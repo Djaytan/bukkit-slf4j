@@ -72,12 +72,10 @@ public final class BukkitLoggerFactory implements ILoggerFactory {
   @Override
   @Contract("null -> fail")
   public Logger getLogger(@Nullable String name) {
-    if (name == null) {
-      throw new IllegalArgumentException("The logger name cannot be null");
-    }
+    // Name provided as argument is discarded in favor of the static Bukkit logger one
     if (staticLogger == null) {
       throw new IllegalStateException("The Bukkit logger must be defined first");
     }
-    return new BukkitLoggerAdapter(staticLogger, name);
+    return new BukkitLoggerAdapter(staticLogger, staticLogger.getName());
   }
 }
