@@ -466,6 +466,8 @@
               <publishingServerId>central</publishingServerId>
               <autoPublish>true</autoPublish>
               <waitUntil>published</waitUntil>
+              <waitMaxTime>3600</waitMaxTime>
+              <waitPollingInterval>30</waitPollingInterval>
               <deploymentName>${project.build.finalName}</deploymentName>
             </configuration>
           </plugin>
