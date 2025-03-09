@@ -212,7 +212,7 @@ final class BasicTests {
   }
 
   @Test
-  void bukkit_logger_name_must_always_be_disregarded() {
+  void bukkit_logger_name_must_always_be_used() {
     // Arrange
     String loggerName = "another logger name";
     var julLogger = Logger.getLogger(SAMPLE_LOGGER_NAME);
@@ -223,29 +223,7 @@ final class BasicTests {
     var slf4jLogger = LoggerFactory.getLogger(loggerName);
 
     // Assert
-    assertThat(slf4jLogger.getName()).isEqualTo(loggerName);
-  }
-
-  /**
-   * The <code>null</code> value for SLF4J logger name is not accepted.
-   *
-   * @see org.slf4j.ILoggerFactory#getLogger(String)
-   */
-  @Test
-  void consumer_get_an_exception_when_trying_to_get_a_logger_without_specifying_name() {
-    // Arrange
-    String undefinedLoggerName = null;
-    var julLogger = Logger.getLogger(SAMPLE_LOGGER_NAME);
-
-    BukkitLoggerFactory.provideBukkitLogger(julLogger);
-
-    // Act
-    ThrowingCallable call = () -> LoggerFactory.getLogger(undefinedLoggerName);
-
-    // Assert
-    assertThatThrownBy(call)
-        .isExactlyInstanceOf(IllegalArgumentException.class)
-        .hasMessage("The logger name cannot be null");
+    assertThat(slf4jLogger.getName()).isEqualTo(julLogger.getName());
   }
 
   @Test
