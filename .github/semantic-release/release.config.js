@@ -20,12 +20,6 @@ module.exports = {
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
     [
-      '@semantic-release/github',
-      {
-        labels: ['t:release']
-      }
-    ],
-    [
       '@semantic-release/exec',
       {
         publishCmd: [
@@ -35,5 +29,11 @@ module.exports = {
         ].join(' && ')
       }
     ],
+    [
+      '@semantic-release/github',
+      {
+        labels: ['t:release']
+      }
+    ]
   ]
 }
