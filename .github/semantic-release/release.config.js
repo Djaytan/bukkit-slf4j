@@ -29,7 +29,7 @@ module.exports = {
       '@semantic-release/exec',
       {
         publishCmd: [
-          'cd ${MAVEN_ROOT_PROJECT_DIR}',
+          `cd ${process.env.MAVEN_ROOT_PROJECT_DIR}`,
           './mvnw versions:set -DnewVersion="${nextRelease.version}"',
           './mvnw deploy -Prelease -DskipTests'
         ].join(' && ')
