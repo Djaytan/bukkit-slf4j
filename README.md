@@ -101,14 +101,11 @@ extension [here](https://github.com/Djaytan/mc-jobs-reborn-patch-place-break).
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on ways to help us.
-
-Take care to always follow our [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+If you want to help us improve the project, you can learn more about ways to do so [here](docs/CONTRIBUTING.md).
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the
-[tags on this repository](https://github.com/Djaytan/bukkit-slf4j/tags).
+This project follows [Semantic Versioning](http://semver.org/).
 
 ## Security Policy
 
