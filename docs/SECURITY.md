@@ -1,6 +1,6 @@
 # Security Policy
 
-This document outlines security procedures and general policies for the Bukkit SLF4J project.
+This document outlines security procedures and general policies for the project.
 
 ## Reporting a Vulnerability
 
