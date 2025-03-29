@@ -7,7 +7,7 @@ module.exports = {
       'renovate', 'release'
     ]],
 
-    // Compliant with Angular conventions (getting rid of "style" and "chore" types)
+    // Compliant with Angular conventions (get rid of "style" type but tolerate "chore" one)
     'type-enum': [2, 'always', [
       'feat', 'fix', 'perf', 'revert', 'refactor', 'build', 'test', 'ci',
       'docs', 'chore'
