@@ -45,10 +45,10 @@ jobs:
         with:
           node-version: lts/jod
           cache: npm
-          cache-dependency-path: .github/semantic-release/package-lock.json
+          cache-dependency-path: .github/release/package-lock.json
 
       - name: Install semantic-release
-        working-directory: .github/semantic-release/
+        working-directory: .github/release/
         run: npm clean-install
 
       - name: Setup Java
@@ -71,5 +71,5 @@ jobs:
           MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
           MAVEN_ARGS: --batch-mode -Dstyle.color=always
           MAVEN_ROOT_PROJECT_DIR: ${{ github.workspace }}
-        working-directory: .github/semantic-release/
+        working-directory: .github/release/
         run: npx --no-install semantic-release
