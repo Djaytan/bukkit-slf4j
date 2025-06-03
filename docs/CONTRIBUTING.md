@@ -99,106 +99,12 @@ replace the default IDE code formatting behavior.
 
 ### ⭕ Conventional Commits
 
-Following a standard for commit message provides several benefits:
+Using a standardized commit message format offers several benefits:
 
-* Readable for both humans **and** machines
-* Automatic version bump
-* Automatic release note creation/update
+* Improves the readability of commit history for both humans **and** machines
+* Enables automatic version bumping
+* Facilitates automatic creation and updating of release notes
 
-This is why we strive to follow
-the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) one.
+For these reasons, we follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
 
-We took inspiration
-from [Angular project](https://github.com/angular/angular/blob/main/CONTRIBUTING.md#type).
-
-#### Commit Message Header
-
-```
-<type>(<scope>): <short summary>
-  │       │             │
-  │       │             └─⫸ Summary in present tense. Not capitalized. No period at the end.
-  │       │
-  │       └─⫸ Commit Scope: readme|contributing|packaging|deps|other|github|renovate|release
-  │
-  └─⫸ Commit Type: feat|fix|perf|refactor|docs|test|build|ci|chore
-```
-
-The `<type>` and `<summary>` fields are mandatory, the `(<scope>)` field is optional.
-
-##### Type
-
-It must be one of the following:
-
-* **feat**: A new feature
-* **fix**: A bug fix
-* **perf**: A code change that improves performance
-* **refactor**: A code change that neither fixes a bug nor adds a feature
-* **docs**: Documentation only changes
-* **test**: Adding missing tests or correcting existing tests
-* **build**: Changes that affect the build system or external dependencies
-* **ci**: Changes to our CI configuration files and scripts (e.g. GitHub Actions, Renovate, ...)
-* **chore**: Changes that don't in any other category (e.g. dependencies' update, update
-  of `.gitignore` `.gitattributes` & `.editorconfig` files, ...)
-
-##### Scope
-
-No scope should be specified except for some changes.
-
-###### Specific to the `docs` type
-
-* **readme**: used for changes updating the `README.md` file
-* **contributing**: used for changes updating the contribution-related
-  files: `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md` & `SECURITY.md`
-
-###### Specific to the `build` type
-
-* **packaging**: used for changes updating the Maven layout in all of our modules (e.g. groupId
-  change, inherited plugins changes, ...)
-
-###### Specific to the `ci` type
-
-* **github**: used for updating GitHub Actions workflows, issues/PRs templates and `CODEOWNERS`
-  file(s)
-* **renovate**: used for updating Renovate configuration
-* **release**: used for updating release-related configuration
-
-##### Specific to the `chore` & `fix` types
-
-* **deps**: used for changes updating the project dependencies
-
-##### Summary
-
-The summary must provide a succinct description of the change:
-
-* Use the imperative, present tense: "change" not "changed" nor "changes"
-* Don't capitalize on the first letter
-* No dot (.) at the end
-
-#### Commit Message Body
-
-Just as in the summary, use the imperative, present tense: "fix" not "fixed" nor "fixes".
-
-Explain the motivation for the change in the commit message body. This commit message should explain
-_why_ you are making the change.
-You can include a comparison of the previous behavior with the new behavior in order to illustrate
-the impact of the change.
-
-#### Commit Message Footer
-
-The footer can contain information about breaking changes and is also the place to reference GitHub
-issues, Jira tickets, and other PRs that this commit closes or is related to.
-
-For example:
-
-```
-BREAKING CHANGE: <breaking change summary>
-<BLANK LINE>
-<breaking change description + migration instructions>
-<BLANK LINE>
-<BLANK LINE>
-Fixes #<issue number>
-```
-
-Breaking Change section should start with the phrase `BREAKING CHANGE: ` followed by a summary of
-the breaking change, a blank line, and a detailed description of the breaking change that also
-includes migration instructions.
+Detailed guidelines are available [here](CONVENTIONAL_COMMITS.md).
