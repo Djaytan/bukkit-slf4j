@@ -44,7 +44,7 @@ jobs:
 
       - name: Install commitlint
         working-directory: .github/release/
-        run: npm clean-install
+        run: npm clean-install --engine-strict
 
       - name: Validate current commit (last commit) with commitlint
         if: ${{ github.event_name != 'pull_request' }}

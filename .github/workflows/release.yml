@@ -49,7 +49,7 @@ jobs:
 
       - name: Install semantic-release
         working-directory: .github/release/
-        run: npm clean-install
+        run: npm clean-install --engine-strict
 
       - name: Setup Java
         uses: actions/setup-java@c5195efecf7bdfc987ee8bae7a71cb8b11521c00 # v4.7.1
