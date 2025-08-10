@@ -65,4 +65,4 @@ jobs:
         # Use `--branches '${{ github.head_ref }}'` to consider the PR head ref (source branch) as a release one for the dry run.
         run: |
           unset GITHUB_ACTIONS
-          npx --no-install semantic-release --dry-run --no-ci --branches '${{ github.head_ref }}'
+          npx --no-install semantic-release --dry-run --no-ci --branches "${GITHUB_HEAD_REF}"
