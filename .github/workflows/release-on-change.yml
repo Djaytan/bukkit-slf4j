@@ -1,9 +1,26 @@
-name: Release - Perform
+name: Release - On Change
 
 on:
   workflow_dispatch:
   push:
     branches: [ main, '+.x', beta, alpha ]
+
+# https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#concurrency
+concurrency:
+  # Prevent concurrent releases on the same branch to avoid tag conflicts (e.g., "latest" on the main branch).
+  # Concurrent releases on different branches are allowed, as their tags don't overlap.
+  #
+  # Note: GitHub's concurrency model cancels any *pending* job in the same group when a new one is queued.
+  # This means that if multiple release requests are made in quick succession on the *same* branch,
+  # only the latest one will proceed — which is acceptable, since it includes all previous changes.
+  #
+  # However, using the same concurrency group across *different* branches could result in a release
+  # request for one branch canceling a pending release for another branch — which is *not* acceptable.
+  #
+  # Therefore, we scope concurrency to both the workflow and the branch.
+  group: ${{ github.workflow }}-${{ github.ref }} # e.g. Release-main
+  # Never cancel an ongoing release to prevent harmful interruptions
+  cancel-in-progress: false
 
 permissions: {}
 
